@@ -1,0 +1,48 @@
+﻿@page "/"
+@inject HttpClient Http
+
+<Container Fluid>
+    <div class="flex-row">
+        <div class="margin-right-auto flex-row">
+            <DisplayHeading Size="DisplayHeadingSize.Is4" TextColor="TextColor.Primary">Random Nani Clips
+            </DisplayHeading>
+            <Paragraph>
+                <Text TextColor="TextColor.Primary">she'll be back soon <Image
+                        Source="https://cdn.betterttv.net/emote/60024230c96152314ad681e7/1x"></Image></Text>
+            </Paragraph>
+        </div>
+        <div class="margin-left-auto">
+            <Paragraph>
+                <Link To="https://twitch.tv/nani" Target="Target.Blank">https://twitch.tv/nani</Link>
+            </Paragraph>
+            <Paragraph>
+                <Link To="https://twitter.com/nanilul" Target="Target.Blank">https://twitter.com/nanilul</Link>
+            </Paragraph>
+        </div>
+    </div>
+    <div class="main">
+        <Player VideoUrl="@CurrentClip" />
+        <div class="margin-bottom-auto">
+            <Button Class="btn-margin-left" TextColor="TextColor.Secondary" Color="Color.Primary" Clicked="GetNewClip">
+                New Clip
+            </Button>
+        </div>
+    </div>
+</Container>
+
+@code {
+    private string[] Clips;
+    private string CurrentClip;
+
+    private void GetNewClip()
+    {
+        var random = new Random();
+        CurrentClip = Clips[random.Next(Clips.Length)];
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Clips = await Http.GetFromJsonAsync<string[]>("data/clips.json");
+        GetNewClip();
+    }
+}

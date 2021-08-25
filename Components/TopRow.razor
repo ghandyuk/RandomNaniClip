@@ -1,0 +1,30 @@
+<Bar Breakpoint="Breakpoint.Desktop" Background="Background.Primary">
+    <BarMenu>
+        <BarStart>
+            <BarItem>
+                <BarLink To="/">Home</BarLink>
+            </BarItem>
+        </BarStart>
+        <BarEnd>
+            <BarItem>
+                <a class="btn btn-link no-underline" @onclick="UpdateTheme"> @ThemeText </a>
+            </BarItem>
+            <BarItem>
+                <BarLink To="about">About</BarLink>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
+
+@code {
+    private bool isDarkMode = true;
+    private string ThemeText => isDarkMode ? "🌙" : "☀";
+
+    [Parameter] public EventCallback<bool> ThemeChanged { get; set; }
+
+    private async Task UpdateTheme()
+    {
+        isDarkMode = !isDarkMode;
+        await ThemeChanged.InvokeAsync(isDarkMode);
+    }
+}

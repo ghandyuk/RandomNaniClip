@@ -1,0 +1,12 @@
+@inherits LayoutComponentBase
+
+<Layout>
+    <Layout>
+        <LayoutHeader Fixed="false">
+            <TopRow ThemeChanged="@OnThemeChanged" />
+        </LayoutHeader>
+        <LayoutContent Background="Background.Primary" Padding="Padding.Is4.OnX">
+            @Body
+        </LayoutContent>
+    </Layout>
+</Layout>

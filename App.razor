@@ -1,0 +1,43 @@
+﻿<ThemeProvider Theme="@theme">
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</ThemeProvider>
+
+@code {
+    private Theme theme = new Theme
+    {
+        IsGradient = true,
+        ColorOptions = new()
+        {
+            Dark = "#404040",
+            Light = "#fcfcfc",
+            Primary = "#404040",
+        },
+        BackgroundOptions = new()
+        {
+            Dark = "#404040",
+            Light = "#fcfcfc",
+            Primary = "#404040",
+        },
+        TextColorOptions = new()
+        {
+            Dark = "#fcfcfc",
+            Light = "#404040",
+            Primary = "#fcfcfc",
+            @* Secondary = "#404040", *@
+            Secondary = "#fcfcfc",
+        },
+        ButtonOptions = new()
+        {
+
+        },
+    };
+}
