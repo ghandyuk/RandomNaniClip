@@ -1,0 +1,89 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+.spinner {
+    margin: 100px auto;
+}
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #404040;
+}
+
+a {
+    color: #579AFF !important;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.btn-margin-left {
+    margin-left: 0.5rem;
+}
+
+.margin-bottom {
+    margin-bottom: 0.5rem;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.margin-left-auto {
+    margin-left: auto;
+}
+
+.margin-right-auto {
+    margin-right: auto;
+}
+
+.margin-bottom-auto {
+    margin-bottom: auto;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: col;
+}
+
+.content {
+    padding-top: 1.1rem;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
