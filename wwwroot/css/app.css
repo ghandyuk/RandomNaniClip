@@ -13,6 +13,12 @@ a {
     color: #579AFF !important;
 }
 
+@media (min-width: 1800px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1440px;  
+    }
+}
+
 .display-flex {
     display: flex;
 }

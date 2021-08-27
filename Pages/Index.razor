@@ -1,7 +1,7 @@
 ﻿@page "/"
 @inject HttpClient Http
 
-<Container Fluid>
+<Container>
     <div class="flex-row">
         <div class="margin-right-auto flex-row">
             <DisplayHeading Size="DisplayHeadingSize.Is4" TextColor="TextColor.Primary">Random Nani Clips
@@ -20,6 +20,8 @@
             </Paragraph>
         </div>
     </div>
+</Container>
+<Container Fluid>
     <div class="main">
         <Player VideoUrl="@CurrentClip" />
         <div class="margin-bottom-auto">
