@@ -1,7 +1,7 @@
-﻿@page "/"
+﻿@page "/view/{Url}"
 @inject HttpClient Http
 
-<Container>
+<Container Fluid>
     <div class="flex-row">
         <div class="margin-right-auto flex-row">
             <DisplayHeading Size="DisplayHeadingSize.Is4" TextColor="TextColor.Primary">Random Nani Clips
@@ -20,34 +20,27 @@
             </Paragraph>
         </div>
     </div>
-</Container>
-<Divider></Divider>
-<Container>
-    <div class="flex justify-content-center margin-bottom">
-        <Button Class="btn-margin-left" TextColor="TextColor.Secondary" Color="Color.Primary" Clicked="GetNewClip">
-            New Clip
-        </Button>
-    </div>
-</Container>
-<Container Fluid>
     <div class="main">
-        <Player VideoUrl="@CurrentClip" />
+        <Player VideoUrl="@Clip" />
     </div>
 </Container>
 
 @code {
+    [Parameter]
+    public string Url { get; set; }
+    private string Clip;
     private string[] Clips;
-    private string CurrentClip;
-
-    private void GetNewClip()
-    {
-        var random = new Random();
-        CurrentClip = Clips[random.Next(Clips.Length)];
-    }
 
     protected override async Task OnInitializedAsync()
     {
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
         Clips = await Http.GetFromJsonAsync<string[]>("data/clips.json");
-        GetNewClip();
+        var urlParam = Clips.Where(x => x == $"https://clips-media-assets2.twitch.tv/{Url}.mp4").FirstOrDefault();
+        Clip = urlParam;
     }
 }

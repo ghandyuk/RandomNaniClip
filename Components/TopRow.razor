@@ -7,7 +7,7 @@
         </BarStart>
         <BarEnd>
             <BarItem>
-                <a class="btn btn-link no-underline" @onclick="UpdateTheme"> @ThemeText </a>
+                <button type="button" class="btn shadow-none" @onclick="UpdateTheme"> @ThemeText </button>
             </BarItem>
             <BarItem>
                 <BarLink To="about">About</BarLink>
@@ -18,7 +18,7 @@
 
 @code {
     private bool isDarkMode = true;
-    private string ThemeText => isDarkMode ? "🌙" : "☀";
+    private string ThemeText => isDarkMode ? "🌙" : "🌞"; 
 
     [Parameter] public EventCallback<bool> ThemeChanged { get; set; }
 
