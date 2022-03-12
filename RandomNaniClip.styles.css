@@ -1,6 +1,34 @@
 /* /Components/Player.razor.rz.scp.css */
 .player[b-aa3r49x1cg] {
-    width: 65vw;
+    position: relative;
+}
+
+@media (min-width: 360px) {
+    .player[b-aa3r49x1cg] {
+        min-width: 100vw;  
+        width: 100vw;
+    }
+}
+
+@media (min-width: 720px) {
+    .player[b-aa3r49x1cg] {
+        min-width: 100vw;  
+        width: 100vw;  
+    }
+}   
+
+@media (min-width: 900px) {
+    .player[b-aa3r49x1cg] {
+        min-width: 80vw;  
+        width: 80vw;  
+    }
+}
+    
+@media (min-width: 1420px) {
+    .player[b-aa3r49x1cg] {
+        min-width: 65vw;  
+        width: 65vw;  
+    }
 }
 /* /Layouts/MainLayout.razor.rz.scp.css */
 .page[b-zhvigtcveh] {
