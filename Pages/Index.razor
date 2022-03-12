@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using static RandomNaniClip.Extensions.ListExtensions
 @inject HttpClient Http
 
 <Container>
@@ -22,32 +23,41 @@
     </div>
 </Container>
 <Divider></Divider>
-<Container>
-    <div class="flex justify-content-center margin-bottom">
-        <Button Class="btn-margin-left" TextColor="TextColor.Secondary" Color="Color.Primary" Clicked="GetNewClip">
-            New Clip
-        </Button>
-    </div>
-</Container>
 <Container Fluid>
     <div class="main">
-        <Player VideoUrl="@CurrentClip" />
+        @if (isLoaded)
+        {
+            <Player VideoUrl="@currentClip" AutoPlay="@autoPlay">
+                <div style="position: absolute; top: 0; right: 0; z-index: 3; padding: 5px">
+                    <Button style="background-color: #00b3ff;" Class="btn-margin-left" TextColor="TextColor.Secondary"
+                    Clicked="GetNewClip">
+                        New Clip
+                    </Button>
+                </div>
+            </Player>
+        }
     </div>
 </Container>
 
 @code {
-    private string[] Clips;
-    private string CurrentClip;
+    private IList<string> clips;
+    private int currentClipIndex = 0;
+    private string currentClip;
+    private bool autoPlay = false;
+    private bool isLoaded = false;
 
     private void GetNewClip()
     {
-        var random = new Random();
-        CurrentClip = Clips[random.Next(Clips.Length)];
+        currentClipIndex = (currentClipIndex + 1) % clips.Count;
+        currentClip = clips[currentClipIndex];
+        autoPlay = true;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        Clips = await Http.GetFromJsonAsync<string[]>("data/clips.json");
-        GetNewClip();
+        clips = await Http.GetFromJsonAsync<IList<string>>("data/clips.json");
+        clips.ShuffleMe();
+        currentClip = clips[currentClipIndex];
+        isLoaded = true;
     }
 }

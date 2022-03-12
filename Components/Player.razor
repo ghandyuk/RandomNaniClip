@@ -1,17 +1,16 @@
-﻿<video class="player margin-bottom" controls autoplay="false" src="@VideoUrl">
-</video>
+﻿@using Blazorise.Video
+
+<div class="player margin-bottom">
+    <Video Ratio="16:9" AutomaticallyHideControls="true" Volume="0.8" DisableContextMenu="true" AutoPlay="@AutoPlay"
+        src="@VideoUrl" />
+    @ChildContent
+</div>
 
 @code {
     [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
     public string VideoUrl { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-
-    }
-
-    private void ToggleMainMenuItems()
-    {
-
-    }
+    [Parameter]
+    public bool AutoPlay { get; set; } = false;
 }
