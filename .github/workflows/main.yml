@@ -39,8 +39,8 @@ jobs:
       
      - name: Deploy to GitHub Pags
        # You may pin to the exact commit or the version.
-       # uses: JamesIves/github-pages-deploy-action@5dc1d5a192aeb5ab5b7d5a77b7d36aea4a7f5c92
-       uses: JamesIves/github-pages-deploy-action@4.2.5
+       # uses: JamesIves/github-pages-deploy-action@830e6a4f7c81743c52f3fed0ac67428feff9620a
+       uses: JamesIves/github-pages-deploy-action@v4.2.5
        with: 
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
